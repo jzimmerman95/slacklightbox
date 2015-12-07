@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slack Lightbox Challenge</title>
+  </head>
+  <body>
+    <div id="content">
+    	<img src="image1.jpg" id="currentImg" />
+    </div>
+    <script>
+      var images = [];
+      function hndlr(response) {
+      for (var i = 0; i < response.items.length; i++) {
+      	console.log(response.items.length);
+        images[i] = response.items[i].link;
+        console.log(response.items[i].link);
+        // in production code, item.htmlTitle should have the HTML entities escaped.
+        // document.getElementById("content").innerHTML += "<img src='' class='currentImg'>" + item.htmlTitle;
+        document.getElementById("currentImg").src = response.items[i].link;
+      }
+      console.log(images);
+    }
+    </script>
+    <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyDlMR1wosy0jhLmQxcpUtJLBcWSn-AgMYY&amp;cx=009099280349420974962:nnd7lm2p170&amp;q=puppy&amp;callback=hndlr&amp;searchType=image">
+    </script>
+  </body>
+</html>
