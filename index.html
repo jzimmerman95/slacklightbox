@@ -2,26 +2,20 @@
 <html>
   <head>
     <title>Slack Lightbox Challenge</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <div class="title">Slack Lightbox Challenge</div>
     <div id="content">
-    	<img src="image1.jpg" id="currentImg" />
+      <div id="lightBoxBg" onclick="dismiss()"></div>
+      <div id="lightBox">
+        <div id="lightBoxTitle" class="lightBoxTitle"></div>
+        <div class="prevArrow"><img src="images/backArrow.png" onclick="goToPrev()" id="prevArrow"/></div>
+        <div class="nextArrow"><img src="images/nextArrow.png" onclick="goToNext()" id="nextArrow"/></div>
+        <div id="lightBoxImg" class="lightBoxImage"></div>
+      </div>
     </div>
-    <script>
-      var images = [];
-      function hndlr(response) {
-      for (var i = 0; i < response.items.length; i++) {
-      	console.log(response.items.length);
-        images[i] = response.items[i].link;
-        console.log(response.items[i].link);
-        // in production code, item.htmlTitle should have the HTML entities escaped.
-        // document.getElementById("content").innerHTML += "<img src='' class='currentImg'>" + item.htmlTitle;
-        document.getElementById("currentImg").src = response.items[i].link;
-      }
-      console.log(images);
-    }
-    </script>
-    <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyDlMR1wosy0jhLmQxcpUtJLBcWSn-AgMYY&amp;cx=009099280349420974962:nnd7lm2p170&amp;q=puppy&amp;callback=hndlr&amp;searchType=image">
-    </script>
+      <script src="main.js"></script>
+      <script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyDlMR1wosy0jhLmQxcpUtJLBcWSn-AgMYY&amp;cx=009099280349420974962:nnd7lm2p170&amp;q=ocean&amp;callback=hndlr&amp;searchType=image"></script>
   </body>
 </html>
